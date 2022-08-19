@@ -1,7 +1,7 @@
 # プリザンターdockerのdockerhub化
-KHB07334用にコミットしたものをdockerhubに登録し、それに合わせたdocker-compose.ymlを修正。
+KHB07334用にコミットしたものをdockerhubに登録し、それに合わせてdocker-compose.ymlを修正。
 
-## 以下は作者のReadmeの原文
+### 以下は作者のReadmeの原文 (https://github.com/twintee/pleasanter-docker)
 
 # プリザンターdocker（postgres対応／.netcore版）
 
