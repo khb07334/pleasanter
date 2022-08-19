@@ -2,6 +2,8 @@
 KHB07334用にコミットしたものをdockerhubに登録し、それに合わせてdocker-compose.ymlを修正。
 (buildで構築している場合時間が立つとVersionの整合性が合わなくなり起動に失敗するリスクを回避するため)
 
+起動Webは　http://10.0.2.15:8080/
+
 ### 以下は作者のReadmeの原文 (https://github.com/twintee/pleasanter-docker)
 
 # プリザンターdocker（postgres対応／.netcore版）
