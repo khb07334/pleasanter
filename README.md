@@ -1,8 +1,9 @@
-# プリザンターdockerのdockerhub化
+# プリザンターdockerのdockerhub化→失敗
 KHB07334用にコミットしたものをdockerhubに登録し、それに合わせてdocker-compose.ymlを修正。
 (buildで構築している場合時間が立つとVersionの整合性が合わなくなり起動に失敗するリスクを回避するため)
+→これでは動かない。
 
-起動Webは　http://10.0.2.15:8080/
+起動Webは　http://10.0.2.15:8080/　(nginx.conf　にて確認)
 
 ### 以下は作者のReadmeの原文 (https://github.com/twintee/pleasanter-docker)
 
