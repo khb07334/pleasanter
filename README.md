@@ -1,9 +1,28 @@
-# プリザンターdockerのdockerhub化→失敗
+# プリザンターdockerのdockerhub化
 KHB07334用にコミットしたものをdockerhubに登録し、それに合わせてdocker-compose.ymlを修正。
 (buildで構築している場合時間が立つとVersionの整合性が合わなくなり起動に失敗するリスクを回避するため)
 →これでは動かない。
 
 起動Webはvirtualbox上Dockerの場合ゲストOSのIPである　http://10.0.2.15:8080/　(nginx.conf　にて確認)
+
+■初回設定
+ログインID:  Administrator
+パスワード: pleasanter  
+
+■[特権設定](https://pleasanter.org/manual/user-management-privileged-users)
+操作手順
+    プリザンターが動作するサーバにログインします。
+    プリザンターのパラメータファイルが格納されているディレクトリ（\App_Data\Parameters）を開き「Security.json」をメモ帳などで開きます。
+    "PrivilegedUsers"に、対象とするユーザのログインIDを配列形式で指定します。
+    ファイルを保存してプリザンターを再起動します。
+
+JSON
+
+{
+    "PrivilegedUsers": ["Administrator", "AdminUser1", "AdminUser2"]
+}
+
+
 
 ### 以下は作者のReadmeの原文 (https://github.com/twintee/pleasanter-docker)
 
