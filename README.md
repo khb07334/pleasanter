@@ -1,9 +1,9 @@
 # プリザンターdockerのdockerhub化
 KHB07334用にコミットしたものをdockerhubに登録し、それに合わせてdocker-compose.ymlを修正。
 (buildで構築している場合時間が立つとVersionの整合性が合わなくなり起動に失敗するリスクを回避するため)
-→これでは動かない。
-
-起動Webはvirtualbox上Dockerの場合ゲストOSのIPである　http://10.0.2.15:8080/　(nginx.conf　にて確認)
+→　〇　wsl(2)単独環境上では起動確認。メッセージ通りのURLで起動可。
+→　〇　VirtualBox環境では起動Webはvirtualbox上Dockerの場合ゲストOSのIPである　http://10.0.2.15:8080/　(nginx.conf　にて設定確認)
+→　×　会社プロキシ＋Ubuntu18の環境ではスクリプト完了せず。
 
 ■初回設定
 ログインID:  Administrator
