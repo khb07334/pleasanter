@@ -6,7 +6,8 @@ services:
     image: postgres:12-alpine
     container_name: pls-db
     ports:
-      - "${POSTGRES_PORT-5432}:5432"
+#      - "${POSTGRES_PORT-5432}:5432"
+      - "${POSTGRES_PORT}:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -29,7 +30,8 @@ services:
     # user: root
     privileged: true
     ports:
-      - "${PLS_PORT-10080}:80"
+#      - "${PLS_PORT-10080}:80"
+      - "${PLS_PORT}:80"
     tty: true
     environment:
       TZ: ${TZ}
