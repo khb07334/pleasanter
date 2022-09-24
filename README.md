@@ -1,7 +1,7 @@
 # プリザンター公式dockerの構築Tips
 KHB07334用にコミットしたものをdockerhubに登録し、それに合わせてdocker-compose.ymlを修正。  
-(buildで構築している場合時間が立つとVersionの整合性が合わなくなり起動に失敗するリスクを回避するため)
-→　〇　wsl(2)単独環境上では起動確認。メッセージ通りのURLで起動可。  
+(プロキシ内構築軽減とbuildで構築している場合時間が立つとVersionの整合性が合わなくなり起動に失敗するリスクを回避するため)
+→　〇　wsl(v2)単独環境上では起動確認。メッセージ通りのURLで起動可。
 →　〇　VirtualBox環境では起動Webはvirtualbox上Dockerの場合ゲストOSのIPである　http://10.0.2.15:8080/　(nginx.conf　にて設定確認)  
 →　×　会社プロキシ＋Ubuntu18の環境ではスクリプト完了せず。  
 →　◎(220914)37Ubuntu18でやった事。.envは変更せずPython3 init.pyで構築。Postgreのポート5432が当たる場合は.env内容を一旦5432以外にしてinit.pyを実行。構築時にdotnetだけエラーを吐く状態で構築完了したらpls-baseコンテナに入って<br>  Implem.Pleasanter/App_Data/Parameter/Rds.json <br>にあるPostgresqlポートが先の.envに設定した値になっているので5432に変更する。変更後<br> dotnet /web/pleasanter/Implem.CodeDefiner/Implem.CodeDefiner.NetCore.dll _rds <br> を実行しエラーが出ない事を確認。その後<br> systemctl daemon-reload && systemctl restart pleasanter <br> でサービスを再起動しWebにアクセス出来れば完了。<br>ホストサーバの80ポートを使用するようなのでapache2とか動いてたら止めないとpleasanterのポートを変更してても到達できない。
