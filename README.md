@@ -1,4 +1,4 @@
-# プリザンターdockerのdockerhub化
+# プリザンター公式dockerのdockerhub化
 KHB07334用にコミットしたものをdockerhubに登録し、それに合わせてdocker-compose.ymlを修正。  
 (buildで構築している場合時間が立つとVersionの整合性が合わなくなり起動に失敗するリスクを回避するため)
 →　〇　wsl(2)単独環境上では起動確認。メッセージ通りのURLで起動可。  
