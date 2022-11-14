@@ -39,7 +39,8 @@ nectionString":"Server=postgres-db;Port=5432;Database=#ServiceName#;UID=#Service
 dotnet /web/pleasanter/Implem.CodeDefiner/Implem.CodeDefiner.NetCore.dll _rds
 ```
 を実行しエラーが出ない事を確認。その後<br>
-```systemctl daemon-reload && systemctl restart pleasanter
+```
+systemctl daemon-reload && systemctl restart pleasanter
 ```
 でサービスを再起動しWebにアクセス出来れば完了。<br>
 ホストサーバの80ポートを使用するようなのでapache2とか動いてたら止めないとpleasanterのポートを変更してても到達できない。<br>
