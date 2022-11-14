@@ -59,10 +59,12 @@ systemctl daemon-reload && systemctl restart pleasanter
 パスワード: pleasanter
 
 ### ◆[特権設定](https://pleasanter.org/manual/user-management-privileged-users)
-
+<details><summary>展開</summary><div>
+ 
 操作手順<br> プリザンターが動作するサーバにログインします。<br> プリザンターのパラメータファイルが格納されているディレクトリ（\App_Data\Parameters）を開き「Security.json」をメモ帳などで開きます。"PrivilegedUsers"に、対象とするユーザのログインIDを配列形式で指定します。<br>
 
 JSON<br> ` { "PrivilegedUsers": ["Administrator", "AdminUser1", "AdminUser2"] } ` <br> ファイルを保存してプリザンターを再起動します。<br><br>
+</div></details>
 
 ## ◆dockerイメージについて
 
@@ -72,7 +74,7 @@ https://github.com/k-is-k/docker-pleasanter
 -----
 ### ◆公式プリザンターdocker（postgres対応／.netcore版）<br>
 [以下は作者のReadmeの原文](https://github.com/twintee/pleasanter-docker)
-<details><summary>  内容</summary><div>
+<details><summary>展開</summary><div>
  
 Postgres対応版.netcoreプリザンターのdocker構築用Dockerfileとdocker-compose.ymlその他諸々。  
 コマンドで動くようにしたかったのとDockerfileに可能な限り詰め込んで作業を軽減してみた。  
@@ -107,8 +109,8 @@ https://qiita.com/ta24toy27/items/986b3057e08f3da2fc06
 </div></details>
 
 ## ◆利用TIPS
-### ◆開発者向け機能：拡張機能：拡張SQL：APIから拡張SQLを実行する　[リンク先](https://pleasanter.org/manual/extended-sql-api)
-<details><summary>  内容</summary><div>
+### ◆[開発者向け機能：拡張機能：拡張SQL：APIから拡張SQLを実行する](https://pleasanter.org/manual/extended-sql-api)
+<details><summary>展開</summary><div>
 
 #### 概要
 「[API](https://pleasanter.org/manual/api)」と「[拡張SQL](https://pleasanter.org/manual/extended-sql)」を組み合わせてデータベースから直接データを取得したり更新したりすることができます。
@@ -234,3 +236,58 @@ Response.Data.Table1 （2つめのテーブル）
 Response.Data.Table2 （3つめのテーブル）
 </div>
 </details>
+
+### ◆[プリザンターから外部DBのテーブルを参照したい | Pleasanter](https://pleasanter.org/manual/faq-link-server))
+<details><summary>展開</summary><div>
+
+#### 概要
+
+「[拡張SQL](https://pleasanter.org/manual/extended-sql)」の「OnSelectingColumn」を使用しプリザンターから外部DBのテーブルを参照するサンプルコードです。参照したい外部DBをSQL Serverの「リンクサーバー」機能を使って参照します。
+
+#### 前提条件
+
+1.  事前にリンクサーバの設定が完了している必要があります。
+
+#### 説明
+
+プリザンターから参照する外部DBのテーブル例です。
+| id |氏名|年齢|
+|--|--|--|
+|1|ユーザー1|21|
+1.  プリザンターのテーブルの分類Aに外部DBテーブルの id が格納されていることとします。
+2.  外部DBテーブルの 年齢 をプリザンターの 分類Z に表示します。
+
+#### 操作手順
+
+##### テーブルの設定
+
+1.  プリザンターを開き、テーブルを作成してください。
+2.  「[テーブルの管理](https://pleasanter.org/manual/table-management)」を開き「[一覧](https://pleasanter.org/manual/table-management-grid)」タブと「[エディタ](https://pleasanter.org/manual/table-editor)」タブで「分類Z」を有効化してください。
+3.  対象となるテーブルのサイトIDをメモしてください。
+
+##### 拡張SQLの設定
+
+1.  後述のJSONファイル例を LinkSever.json として保存してください
+    
+    -   保存先は以下の通りです。
+    -   C:\web\pleasanter\Implem.Pleasanter\App_Data\Parameters\ExtendedSqls\LinkServer.json
+2.  SiteIdList をメモしたサイトIDに変更してください。
+    
+3.  CommandText のSQLのFROM句: [リンクサーバー名].[DB名].[スキーマ名].[テーブル名] [照合順序]は設定したいリンクサーバーと、参照したいテーブル名に変更してください。
+    
+4.  プリザンターを再起動してください。
+    
+
+##### JSON(LinkServer.json)
+
+```
+{
+    "Name": "LinkServerTest",
+    "Description": "LinkServerTest",
+    "SiteIdList": [xxx],
+    "ColumnList": ["ClassZ"],
+    "OnSelectingColumn": true,
+    "CommandText": "(select age from [LINKSERVER].[postgres].[public].[staff] where id = Results.ClassA COLLATE Japanese_CI_AS)"
+}
+```
+</div></details>
