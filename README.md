@@ -1,7 +1,8 @@
 
 -------------------------------------
 # プリザンター公式dockerの構築Tips
-`python3 init.py`にて自動構築。この時.env等のパラメータは変更しない。またポート番号が80であることを確認する。<br>
+### ◆初回起動方法
+`python3 init.py`にて自動構築。この時.env等のパラメータは変更しないがポート番号が80であることを確認する。<br>
 <details><summary>起動時の詳細について(220914)</summary><div>
 
 環境ファイル”.env”は変更せずPython3 init.pyで先ず構築できることを確認。Postgreのポート5432が当たる場合は.env内容を一旦5432以外にしてinit.pyを実行。<br>
@@ -48,8 +49,6 @@ systemctl daemon-reload && systemctl restart pleasanter
 パスワード: pleasanter
 
 ### ◆[特権設定](https://pleasanter.org/manual/user-management-privileged-users)
-展開<br>
- 
 操作手順<br> プリザンターが動作するサーバにログインします。<br> プリザンターのパラメータファイルが格納されているディレクトリ（\App_Data\Parameters）を開き「Security.json」をメモ帳などで開きます。"PrivilegedUsers"に、対象とするユーザのログインIDを配列形式で指定します。<br>
 
 JSON<br> ` { "PrivilegedUsers": ["Administrator", "AdminUser1", "AdminUser2"] } ` <br> ファイルを保存してプリザンターを再起動します。<br><br>
