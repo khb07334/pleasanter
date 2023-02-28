@@ -11,11 +11,11 @@ Linux版
 `
 Implem.Pleasanter/App_Data/Parameter/Rds.json
 ` 
-Windows版
+<br>Windows版
 `
 C:¥inetpub¥wwwroot¥pleasanter¥App_Data¥Parameters
 ` 
-にあるPostgresqlポートが先の.envに設定した値になっているので5432に変更する。
+<br>内にあるPostgresqlポートが先の.envに設定した値になっているので5432に変更する。
 ```
  {
         "Dbms": "PostgreSQL",
@@ -41,7 +41,7 @@ Linux版　(Windows版はIIS再起動)
 systemctl daemon-reload && systemctl restart pleasanter
 `
 でサービスを再起動しWebにアクセス出来れば完了。<br>
-ホストサーバの80ポートを使用するようなのでapache2とか動いてたら止めないとpleasanterのポートを変更してても到達できない。<br>
+Plesanter自体は80ポートを使用するようなのでapache2とか動いてたら止めないとpleasanterのポートを変更してても到達できない。<br>
 </div></details>
 
 ### ◆初回アカウント設定
@@ -53,7 +53,7 @@ systemctl daemon-reload && systemctl restart pleasanter
 
 JSON<br> ` { "PrivilegedUsers": ["Administrator", "AdminUser1", "AdminUser2"] } ` <br> ファイルを保存してプリザンターを再起動します。<br><br>
 
-<details><summary>◆起動時Tips<br></summary><div>
+<details><summary>◆起動評価結果<br></summary><div>
 KHB07334用にコミットしたものをdockerhubに登録し、それに合わせてdocker-compose.ymlを修正。
 (プロキシ内構築軽減とbuildで構築している場合時間が立つとVersionの整合性が合わなくなり起動に失敗するリスクを回避するため)<br>
 
