@@ -66,6 +66,9 @@ KHB07334用にコミットしたものをdockerhubに登録し、それに合わ
 → ◎ (220914)37Ubuntu18
 </div></details>
 
+## ◆API連携(Python)
+https://qiita.com/YoshikiSawada/items/17276185f9ed12d74ab9
+
 ## ◆dockerイメージについて
 
 ### ◆docker(k-is-k/docker-pleasanter) こちらのほうが構築しやすいかも
