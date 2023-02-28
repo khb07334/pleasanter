@@ -2,11 +2,11 @@
 -------------------------------------
 # プリザンター公式dockerの構築Tips
 ### ◆初回起動方法
-`python3 init.py`にて自動構築。この時.env等のパラメータは変更しないがポート番号が80であることを確認する。<br>
+`python(3) init.py`にて自動構築。この時.env等のパラメータは変更しないがポート番号が80であることを確認する。<br>
 <details><summary>起動時の詳細について(220914)</summary><div>
 
 環境ファイル”.env”は変更せずPython3 init.pyで先ず構築できることを確認。Postgreのポート5432が当たる場合は.env内容を一旦5432以外にしてinit.pyを実行。<br>
-構築時にdotnetだけエラーを吐く状態で構築完了したらpls-baseコンテナに入って<br>
+このときdotnetだけエラーを吐く状態で構築完了したらpls-baseコンテナに入って<br>
 Linux版
 `
 Implem.Pleasanter/App_Data/Parameter/Rds.json
