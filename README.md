@@ -1,21 +1,11 @@
 
 -------------------------------------
 # プリザンター公式dockerの構築Tips
-## ◆起動時Tips<br>
-KHB07334用にコミットしたものをdockerhubに登録し、それに合わせてdocker-compose.ymlを修正。
-(プロキシ内構築軽減とbuildで構築している場合時間が立つとVersionの整合性が合わなくなり起動に失敗するリスクを回避するため)<br>
+`python3 init.py`にて自動構築。この時.env等のパラメータは変更しない。またポート番号が80であることを確認する。<br>
+<details><summary>起動時の詳細について(220914)</summary><div>
 
-→  〇  wsl(v2)単独環境上では起動確認。メッセージ通りのURLで起動可。<br>
-
-→  〇  VirtualBox環境では起動Webはvirtualbox上Dockerの場合ゲストOSのIPである　http://10.0.2.15:8080/　(nginx.conf　にて設定確認) <br> 
-
-→ ×  会社プロキシ＋Ubuntu18の環境ではスクリプト完了せず。<br>
-
-→ ◎ (220914)37Ubuntu18
-<details><summary>(220914)37Ubuntu18でやった事</summary><div>
-
-環境ファイル”.env”は変更せずPython3 init.pyで先ず構築できることを確認。Postgreのポート5432が当たる場合は.env内容を一旦5432以外にしてinit.pyを実行。
-構築時にdotnetだけエラーを吐く状態で構築完了したらpls-baseコンテナに入って
+環境ファイル”.env”は変更せずPython3 init.pyで先ず構築できることを確認。Postgreのポート5432が当たる場合は.env内容を一旦5432以外にしてinit.pyを実行。<br>
+構築時にdotnetだけエラーを吐く状態で構築完了したらpls-baseコンテナに入って<br>
 Linux版
 `
 Implem.Pleasanter/App_Data/Parameter/Rds.json
@@ -24,7 +14,6 @@ Windows版
 `
 C:¥inetpub¥wwwroot¥pleasanter¥App_Data¥Parameters
 ` 
-
 にあるPostgresqlポートが先の.envに設定した値になっているので5432に変更する。
 ```
  {
@@ -41,7 +30,7 @@ nectionString":"Server=postgres-db;Port=5432;Database=#ServiceName#;UID=#Service
         "DisableIndexChangeDetection": false
  }
 ```
-変更後
+5432に変更後は
 ```
 dotnet /web/pleasanter/Implem.CodeDefiner/Implem.CodeDefiner.NetCore.dll _rds
 ```
@@ -59,11 +48,23 @@ systemctl daemon-reload && systemctl restart pleasanter
 パスワード: pleasanter
 
 ### ◆[特権設定](https://pleasanter.org/manual/user-management-privileged-users)
-<details><summary>展開</summary><div>
+展開<br>
  
 操作手順<br> プリザンターが動作するサーバにログインします。<br> プリザンターのパラメータファイルが格納されているディレクトリ（\App_Data\Parameters）を開き「Security.json」をメモ帳などで開きます。"PrivilegedUsers"に、対象とするユーザのログインIDを配列形式で指定します。<br>
 
 JSON<br> ` { "PrivilegedUsers": ["Administrator", "AdminUser1", "AdminUser2"] } ` <br> ファイルを保存してプリザンターを再起動します。<br><br>
+
+<details><summary>◆起動時Tips<br></summary><div>
+KHB07334用にコミットしたものをdockerhubに登録し、それに合わせてdocker-compose.ymlを修正。
+(プロキシ内構築軽減とbuildで構築している場合時間が立つとVersionの整合性が合わなくなり起動に失敗するリスクを回避するため)<br>
+
+→  〇  wsl(v2)単独環境上では起動確認。メッセージ通りのURLで起動可。<br>
+
+→  〇  VirtualBox環境では起動Webはvirtualbox上Dockerの場合ゲストOSのIPである　http://10.0.2.15:8080/　(nginx.conf　にて設定確認) <br> 
+
+→ ×  会社プロキシ＋Ubuntu18の環境ではスクリプト完了せず。<br>
+
+→ ◎ (220914)37Ubuntu18
 </div></details>
 
 ## ◆dockerイメージについて
