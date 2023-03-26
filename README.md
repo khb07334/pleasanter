@@ -69,13 +69,13 @@ KHB07334用にコミットしたものをdockerhubに登録し、それに合わ
 ## ◆API連携(Python)
 https://qiita.com/YoshikiSawada/items/17276185f9ed12d74ab9
 
-## ◆dockerイメージについて
+## ◆その他のdockerイメージについて
 
-### ◆docker(k-is-k/docker-pleasanter) こちらのほうが構築しやすいかも
+### (1) docker(k-is-k/docker-pleasanter) こちらのほうが構築しやすいかも
 https://github.com/k-is-k/docker-pleasanter
 
 -----
-### ◆公式プリザンターdocker（postgres対応／.netcore版）<br>
+### (2)プリザンターdocker（postgres対応／.netcore版）<br>
 [以下は作者のReadmeの原文](https://github.com/twintee/pleasanter-docker)
 <details><summary>展開</summary><div>
  
