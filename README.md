@@ -69,13 +69,9 @@ KHB07334用にコミットしたものをdockerhubに登録し、それに合わ
 ## ◆API連携(Python)
 https://qiita.com/YoshikiSawada/items/17276185f9ed12d74ab9
 
-## ◆その他のdockerイメージについて
-
-### (1) docker(k-is-k/docker-pleasanter) こちらのほうが構築しやすいかも
-https://github.com/k-is-k/docker-pleasanter
-
+## ◆今回のdockerイメージについて
 -----
-### (2)プリザンターdocker（postgres対応／.netcore版）<br>
+### プリザンターdocker（postgres対応／.netcore版）<br>
 [以下は作者のReadmeの原文](https://github.com/twintee/pleasanter-docker)
 <details><summary>展開</summary><div>
  
@@ -110,6 +106,41 @@ https://qiita.com/ta24toy27/items/986b3057e08f3da2fc06
     1. `make container? (y/*) :` コンテナを作成するなら `y[enter]`  
 - 正常終了時の出力にローカルIP込みのURLが含まれるが、osにより取得されるipが変わる？為参考までに
 </div></details>
+
+## ◆その他のdockerイメージについて
+### (1) インプリム公式docker(https://qiita.com/imp-kawano/items/3bd23f0139a53957134b)
+１．環境変数を設定
+　　特に設定をしなければホストの環境変数が採用されるが、コンテナ個別に設定設定する場合はymlと同じDirに”.env”を作成し、以下のような変数定義を記載する。
+```
+　export POSTGRES_USER=postgres
+　export POSTGRES_PASSWORD=<任意のSaパスワード>
+　export POSTGRES_DB=postgres
+　export Implem_Pleasanter_Rds_PostgreSQL_SaConnectionString='Server=db;Database=postgres;UID=postgres;PWD=<任意のSaパスワード>'
+　export Implem_Pleasanter_Rds_PostgreSQL_OwnerConnectionString='Server=db;Database=#ServiceName#;UID=#ServiceName#_Owner;PWD=<任意のOwnerパスワード>'
+　export Implem_Pleasanter_Rds_PostgreSQL_UserConnectionString='Server=db;Database=#ServiceName#;UID=#ServiceName#_User;PWD=<任意のUserパスワード>'
+# SaConnectionStringの注意点です。
+# 　Server: Composeファイルのservicesで定義した名前にします(db)
+# 　Database: 環境変数のPOSTGRES_DBと同じにします
+# 　UID: 環境変数のPOSTGRES_USERと同じにします
+# 　PWD: 環境変数のPOSTGRES_PASSWORDと同じにします
+```
+２．次に Build の実施
+```
+　　docker-compose build
+ ```
+３．CodeDefinerの実行とPleasanterの起動
+  　初回の場合はCodeDefinerを実行します。
+```
+docker-compose run --rm --name codedefiner Implem.CodeDefiner _rds
+```
+  　Pleasanterを起動します。
+```
+docker-compose run --rm -d -p 50001:80 --name pleasanter Implem.Pleasanter
+```
+### (1) docker(k-is-k/docker-pleasanter) こちらのほうが構築しやすいかも
+https://github.com/k-is-k/docker-pleasanter
+
+
 
 ## ◆利用TIPS
 ### ◆[開発者向け機能：拡張機能：拡張SQL：APIから拡張SQLを実行する](https://pleasanter.org/manual/extended-sql-api)
