@@ -107,8 +107,8 @@ https://qiita.com/ta24toy27/items/986b3057e08f3da2fc06
 </div></details>
 
 ## ◆その他のdockerイメージについて
-### (1) インプリム公式docker(https://qiita.com/imp-kawano/items/3bd23f0139a53957134b)
-１．環境変数を設定 <br>
+### 1. インプリム公式docker(https://qiita.com/imp-kawano/items/3bd23f0139a53957134b)
+(1)環境変数を設定 <br>
 　　特に設定をしなければホストの環境変数が採用されるが、コンテナ個別に設定設定する場合はymlと同じDirに”.env”を作成し、以下のような変数定義を記載する。 <br>
 ```
 　export POSTGRES_USER=postgres
@@ -123,20 +123,20 @@ https://qiita.com/ta24toy27/items/986b3057e08f3da2fc06
 # 　UID: 環境変数のPOSTGRES_USERと同じにします
 # 　PWD: 環境変数のPOSTGRES_PASSWORDと同じにします
 ```
-２．次に Build の実施 <br>
-`
+(2)次に Build の実施
+```
 docker-compose build
- `
-<br>３．CodeDefinerの実行とPleasanterの起動
-<br>  　初回の場合はCodeDefinerを実行します。 <br>  
-`
+```
+(3)CodeDefinerの実行とPleasanterの起動
+<br>  　初回の場合はCodeDefinerを実行します。
+```
 docker-compose run --rm --name codedefiner Implem.CodeDefiner _rds
-`
-<br>  　Pleasanterを起動します。
-`
+```
+  　Pleasanterを起動します。
+```
 docker-compose run --rm -d -p 50001:80 --name pleasanter Implem.Pleasanter
-`
-### (1) docker(k-is-k/docker-pleasanter) こちらのほうが構築しやすいかも
+```
+### 2．docker(k-is-k/docker-pleasanter) こちらのほうが構築しやすいかも
 https://github.com/k-is-k/docker-pleasanter
 
 
