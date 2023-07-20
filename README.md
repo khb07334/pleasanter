@@ -4,9 +4,9 @@
 作業DirをホストDirと共有させる場合は以下手続きを　　<br>
 １．VirtualBoxで共有フォルダー設定。このとき自動マウントは設定しないほうがいいらしい。　　<br>
 ２．共有フォルダーへのアカンウトへ書き込み権利を付ける。［特に重要］　　<br>
-```sudo adduser $USER vboxsf　```
+```sudo adduser $USER vboxsf　```<br>
 3．Mountを実行［コマンド忘れがち］　　<br>
-```sudo mount -t vboxsf share /home/makoto/share　　```
+```sudo mount -t vboxsf share /home/makoto/share　　```<br>
 
 ### ◆初回起動方法
 `python(3) init.py`にて自動構築。この時.env等のパラメータは変更しないがポート番号が80であることを確認する。<br>
