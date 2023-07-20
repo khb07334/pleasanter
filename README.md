@@ -1,5 +1,13 @@
 -------------------------------------
 # プリザンターdockerの構築Tips
+### Virtualboxで構築する場合のTips
+作業DirをホストDirと共有させる場合は以下手続きを　　
+１．VirtualBoxで共有フォルダー設定。このとき自動マウントは設定しないほうがいいらしい。　　
+２．共有フォルダーへのアカンウトへ書き込み権利を付ける。［特に重要］　　
+ sudo adduser $USER vboxsf　　
+3．Mountを実行［コマンド忘れがち］　　
+ sudo mount -t vboxsf share /home/makoto/share　　
+
 ### ◆初回起動方法
 `python(3) init.py`にて自動構築。この時.env等のパラメータは変更しないがポート番号が80であることを確認する。<br>
 <details><summary>起動時の詳細について(220914)</summary><div>
