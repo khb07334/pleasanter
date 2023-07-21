@@ -7,6 +7,7 @@
 ```sudo adduser $USER vboxsf　```<br>
 3．Mountを実行［コマンド忘れがち］　　<br>
 ```sudo mount -t vboxsf share /home/makoto/share　　```<br>
+4.VirtualBox環境では起動Webはvirtualbox上Dockerの場合ゲストOSのIPである　http://10.0.2.15:8080/　(nginx.conf　にて設定確認) <br> HostのIPからのアクセスは今の所できていない。多段リバースプロキシの設定がうまくいけばできそうだが、できていない。<br>
 
 ### ◆初回起動方法
 `python(3) init.py`にて自動構築。この時.env等のパラメータは変更しないがポート番号が80であることを確認する。<br>
@@ -60,7 +61,7 @@ Plesanter自体は80ポートを使用するようなのでapache2とか動い�
 
 JSON<br> ` { "PrivilegedUsers": ["Administrator", "AdminUser1", "AdminUser2"] } ` <br> ファイルを保存してプリザンターを再起動します。<br><br>
 
-<details><summary>◆起動評価結果<br></summary><div>
+## <details><summary>◆各環境下での構築起動評価結果<br></summary><div>
 KHB07334用にコミットしたものをdockerhubに登録し、それに合わせてdocker-compose.ymlを修正。
 (プロキシ内構築軽減とbuildで構築している場合時間が立つとVersionの整合性が合わなくなり起動に失敗するリスクを回避するため)<br>
 
@@ -70,7 +71,7 @@ KHB07334用にコミットしたものをdockerhubに登録し、それに合わ
 
 → ×  会社プロキシ＋Ubuntu18の環境ではスクリプト完了せず。<br>
 
-→ ◎ (220914)37Ubuntu18
+→ ◎ (220914)37Ubuntu18 UbuntuServer
 </div></details>
 
 ## ◆API連携(Python)
